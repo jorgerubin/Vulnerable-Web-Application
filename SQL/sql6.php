@@ -33,11 +33,12 @@
 	$source = "";
 	if(isset($_GET["submit"])){
 		$number = $_GET['number'];
-		$query = "SELECT bookname,authorname FROM books WHERE number = '$number'";
-		$result = mysqli_query($conn,$query);
-		$row = @mysqli_num_rows($result);
+		$query = "SELECT bookname,authorname FROM books WHERE number = :number";
+		$stmt = $this->conn->prepare($query);
+        $stmt->bind_param(":number", $number);
+        $stmt->execute();
 		echo "<hr>";
-		if($row > 0){
+		if($stmt->num_rows > 0){
 			echo "<pre>There is a book with this index.</pre>";
 		}else{
 			echo "Not found!";

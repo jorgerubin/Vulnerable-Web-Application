@@ -40,8 +40,6 @@
         $stmt->bind_param(":number", $number);
         $stmt->execute();
 
-        $stmt->store_result();
-
 		if (!$stmt->num_rows > 0) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";
 		    $message .= 'Whole query: ' . $query;

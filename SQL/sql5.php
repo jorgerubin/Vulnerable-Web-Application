@@ -47,8 +47,10 @@
 			exit;
 		}
 
-		$query = "SELECT bookname,authorname FROM books WHERE number =".'$number'; 
-		$result = mysqli_query($conn,$query);
+		$query = "SELECT bookname,authorname FROM books WHERE number =".':number'; 
+		$stmt = $this->conn->prepare($query);
+        $stmt->bind_param(":number", $number);
+        $stmt->execute();
 
 		if (!$result) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";

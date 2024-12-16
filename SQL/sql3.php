@@ -36,8 +36,10 @@
 	//echo "Connected successfully";
 	if(isset($_POST["submit"])){
 		$number = $_POST['number'];
-		$query = "SELECT bookname,authorname FROM books WHERE number = '$number'"; //Is this same with the level 2?
-		$result = mysqli_query($conn,$query);
+		$query = "SELECT bookname,authorname FROM books WHERE number = :$number"; //Is this same with the level 2?
+		$stmt = $this->conn->prepare($query);
+        $stmt->bind_param(":number", $number);
+        $stmt->execute();
 
 		if (!$result) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";

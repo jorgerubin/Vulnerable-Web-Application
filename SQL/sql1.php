@@ -42,8 +42,6 @@
 		$stmt = $this->conn->prepare($query);
         $stmt->bind_param(":firstname", $firstname);
         $stmt->execute();
-
-        $stmt->store_result();
 		
 		if ( $stmt->num_rows > 0) {
         // output data of each row
