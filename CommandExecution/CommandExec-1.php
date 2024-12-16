@@ -22,8 +22,18 @@
   <div style="background-color:#ecf2d0;padding:20px;border-radius:0px 0px 20px 20px" align="center">
     <?php
     if(isset($_GET["username"])){
-      echo shell_exec($_GET["username"]);
-      if($_GET["username"] == "Admin" && $_GET["password"] == "ufoundmypassword")
+
+      $patternAdmin = "/[A-Za-z]{5}/i";
+      $patternPassword = "/[a-z]{16}/i";
+
+      if (preg_match($pattern, $string)){
+        $username = $_GET["username"]
+      }
+      if (preg_match($pattern, $string)){
+        $password = $_GET["password"]
+      }
+
+      if($username == "Admin" && $password == "ufoundmypassword")
         echo "WELLDONE";
     }
 
