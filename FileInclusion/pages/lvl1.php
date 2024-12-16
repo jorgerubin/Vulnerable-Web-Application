@@ -18,12 +18,22 @@
       </div>
       
       <?php
+
+         $INCLUDE_ALLOW_LIST = [
+            "home.php",
+            "dashboard.php",
+            "profile.php",
+            "settings.php"
+         ];
+
         echo "</br></br>";
         
         if (isset( $_GET[ 'file' ]))        
         {
-          @include($_GET[ 'file' ]);
-          echo"<div align='center'><b><h5>".$_GET[ 'file' ]."</h5></b></div> ";       
+         if (in_array($filename, $INCLUDE_ALLOW_LIST)) {
+            @include($_GET[ 'file' ]);
+            echo"<div align='center'><b><h5>".$_GET[ 'file' ]."</h5></b></div> ";       
+         }
         }
       ?>
    </body>
