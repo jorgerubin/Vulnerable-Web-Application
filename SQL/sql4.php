@@ -56,7 +56,7 @@
 
 		if (!$result) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";
-		    $message .= 'Whole query: ' . $query;
+		    $message .= 'Whole query: ' . htmlspecialchars($query);
 		    die($message);
 		}
 
