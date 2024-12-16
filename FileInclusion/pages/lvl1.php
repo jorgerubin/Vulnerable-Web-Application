@@ -30,8 +30,9 @@
         
         if (isset( $_GET[ 'file' ]))        
         {
+         $filename = $_GET[ 'file' ];
          if (in_array($filename, $INCLUDE_ALLOW_LIST)) {
-            @include($_GET[ 'file' ]);
+            @include($filename);
             echo"<div align='center'><b><h5>".$_GET[ 'file' ]."</h5></b></div> ";       
          }
         }
