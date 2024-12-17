@@ -54,7 +54,7 @@
         $stmt->bind_param("s", $number);
         $stmt->execute();
 
-		if (!$result) { //Check result
+		if (!$stmt) { //Check result
 		    $message  = 'Invalid query: ' . mysql_error() . "\n";
 		    $message .= 'Whole query: ' . htmlspecialchars($query);
 		    die($message);
