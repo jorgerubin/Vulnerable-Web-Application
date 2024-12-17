@@ -39,7 +39,7 @@
 		$firstname = $_POST["firstname"];
 		$sql = "SELECT lastname FROM users WHERE firstname=:firstname";//String
 		
-		$stmt = $this->conn->prepare($query);
+		$stmt = $$conn->prepare($query);
         $stmt->bind_param(":firstname", $firstname);
         $stmt->execute();
 		

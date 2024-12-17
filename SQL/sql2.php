@@ -35,9 +35,9 @@
 	//echo "Connected successfully";
 	if(isset($_POST["submit"])){
 		$number = $_POST['number'];
-		$query = "SELECT bookname,authorname FROM books WHERE number = :number"; //Int
-		$stmt = $this->conn->prepare($query);
-        $stmt->bind_param(":number", $number);
+		$query = "SELECT bookname,authorname FROM books WHERE number = ?"; //Int
+		$stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $number);
         $stmt->execute();
 
 		if (!$stmt->num_rows > 0) { //Check result

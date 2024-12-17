@@ -33,9 +33,9 @@
 	$source = "";
 	if(isset($_GET["submit"])){
 		$number = $_GET['number'];
-		$query = "SELECT bookname,authorname FROM books WHERE number = :number";
-		$stmt = $this->conn->prepare($query);
-        $stmt->bind_param(":number", $number);
+		$query = "SELECT bookname,authorname FROM books WHERE number = ?";
+		$stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $number);
         $stmt->execute();
 		echo "<hr>";
 		if($stmt->num_rows > 0){

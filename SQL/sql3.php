@@ -37,8 +37,8 @@
 	if(isset($_POST["submit"])){
 		$number = $_POST['number'];
 		$query = "SELECT bookname,authorname FROM books WHERE number = :$number"; //Is this same with the level 2?
-		$stmt = $this->conn->prepare($query);
-        $stmt->bind_param(":number", $number);
+		$stmt = $conn->prepare($query);
+        $stmt->bind_param("s", $number);
         $stmt->execute();
 
 		if (!$result) { //Check result
